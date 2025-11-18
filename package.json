@@ -1,0 +1,60 @@
+{
+  "name": "hardhat-opentelemetry-instrumentation",
+  "version": "1.0.0",
+  "description": "Hardhat 3 instrumentation plugin",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "keywords": [
+    "ethereum",
+    "smart-contracts",
+    "hardhat",
+    "hardhat3",
+    "hardhat-plugin"
+  ],
+  "scripts": {
+    "lint": "pnpm prettier --check && pnpm eslint",
+    "lint:fix": "pnpm prettier --write && pnpm eslint --fix",
+    "eslint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+    "prettier": "prettier \"**/*.{ts,js,md,json}\"",
+    "test": "node --import tsx/esm --test --test-reporter=@nomicfoundation/hardhat-node-test-reporter \"test/*.ts\" \"test/!(fixture-projects|helpers)/**/*.ts\"",
+    "test:only": "node --import tsx/esm --test --test-only --test-reporter=@nomicfoundation/hardhat-node-test-reporter \"test/*.ts\" \"test/!(fixture-projects|helpers)/**/*.ts\"",
+    "pretest": "pnpm build",
+    "pretest:only": "pnpm build",
+    "build": "tsc --build .",
+    "prepublishOnly": "pnpm build",
+    "clean": "rimraf dist",
+    "watch": "tsc --build . --watch"
+  },
+  "files": [
+    "dist/src/",
+    "src/",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "@nomicfoundation/hardhat-node-test-reporter": "^3.0.0",
+    "@tsconfig/node24": "^24.0.2",
+    "@types/node": "^24.10.1",
+    "eslint": "^9.35.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "hardhat": "^3.0.11",
+    "prettier": "3.6.2",
+    "rimraf": "^6.1.0",
+    "tsx": "^4.19.3",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.43.0"
+  },
+  "peerDependencies": {
+    "hardhat": "^3.0.11"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-utils": "^3.0.5",
+    "@opentelemetry/api": "^1.9.0"
+  }
+}
