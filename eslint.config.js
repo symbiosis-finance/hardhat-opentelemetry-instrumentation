@@ -53,7 +53,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['test/**/*.ts', 'integration-tests/**/*.ts'],
+    files: ['test/**/*.ts'],
     ignores: ['test/**/fixture-projects/**'],
     rules: {
       'import/no-extraneous-dependencies': [
@@ -84,7 +84,7 @@ export default defineConfig(
   },
   {
     // This is a set of more opinionated rules. Feel free to adapt to your style.
-    files: ['src/**/*.ts', 'test/**/*.ts', 'integration-tests/**/*.ts'],
+    files: ['src/**/*.ts', 'test/**/*.ts'],
     ignores: ['test/**/fixture-projects/**'],
     rules: {
       'import/order': 'error',

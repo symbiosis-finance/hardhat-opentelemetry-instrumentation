@@ -86,7 +86,7 @@ export default async (): Promise<Partial<NetworkHooks>> => {
             if (err instanceof Error) {
               const rootCause = extractRootCause(err)
               span.recordException(rootCause)
-              if (rootCause instanceof ResponseStatusCodeError) {
+              if (rootCause instanceof ResponseStatusCodeError && rootCause.body) {
                 span.setAttributes(exractFailedJsonRpcResponseAttrs(rootCause.body as FailedJsonRpcResponse))
               }
             } else if (typeof err === 'string') span.recordException(err)
